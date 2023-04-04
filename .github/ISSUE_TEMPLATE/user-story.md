@@ -1,7 +1,7 @@
 ---
 name: User story
-about: This is a critical requirement user story
-title: 'Must Have: <title>'
+about: This is an important user story
+title: 'Should Have: <title>'
 labels: ''
 assignees: ''
 
