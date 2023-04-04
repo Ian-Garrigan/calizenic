@@ -1,7 +1,7 @@
 ---
 name: Could Have
 about: This user story would be nice to have
-title: "<title>"
+title: "Could Have: <title>"
 labels: ''
 assignees: ''
 
