@@ -1,5 +1,5 @@
 ---
-name: User story
+name: User story b
 about: This is an important user story
 title: 'Should Have: <title>'
 labels: ''
