@@ -2,7 +2,7 @@
 name: user-story
 about: multi purpose user story template
 title: 'User Story: <title>'
-labels: ''
+labels: bug, could have, documentation, must have, should have, test, wont have
 assignees: Ian-Garrigan
 
 ---
