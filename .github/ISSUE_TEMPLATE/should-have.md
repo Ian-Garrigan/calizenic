@@ -1,7 +1,7 @@
 ---
-name: User story b
+name: Should Have
 about: This is an important user story
-title: 'Should Have: <title>'
+title: "<title>"
 labels: ''
 assignees: ''
 
