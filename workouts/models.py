@@ -20,8 +20,8 @@ class WorkoutTemplate(models.Model):
 
 class Exercises(models.Model):
 
-    exercise_name = models.CharField(max_length=50, unique=True)
-    exercise_image = CloudinaryField()
+    exercise_name = models.CharField(max_length=50)
+    exercise_image = CloudinaryField('image')
     muscle_group = models.CharField(max_length=50)
 
     def __str__(self):
@@ -34,11 +34,14 @@ class Exercises(models.Model):
 class WorkoutLog(models.Model):
 
     log_name = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE)
-    # exercise_type = models.ForeignKey(Exercises, on_delete=models.CASCADE, to_field='exercise_name')
+    exercise_type = models.ForeignKey(Exercises, on_delete=models.CASCADE)
     weight = models.PositiveIntegerField(default=10)
     sets = models.PositiveIntegerField(default=3)
     reps = models.PositiveIntegerField(default=5)
     note = models.TextField()
+
+    def __str__(self):
+        return self.log_name.template_name
 
 
 class Tracker(models.Model):
