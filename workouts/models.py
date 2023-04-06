@@ -2,9 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
+# This will allow the 'workout template' to remain as a draft mock up
+# or if performed it'll be sent to the tracker
 STATUS = ((0, 'Template'), (1, 'Add to Tracker'))
 
 
+# Represents the model which allows athletes to set up
+# their own workout template and reuse it multiple times.
 class WorkoutTemplate(models.Model):
 
     athlete_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='athlete')
@@ -18,6 +23,8 @@ class WorkoutTemplate(models.Model):
         return self.template_name
 
 
+# Model for storing the range of different exercises and
+# their associated image, specialized for calisthenics athletes.
 class Exercises(models.Model):
 
     exercise_name = models.CharField(max_length=50)
@@ -31,6 +38,8 @@ class Exercises(models.Model):
         verbose_name_plural = 'Exercises'
 
 
+# A model for storing more precise details about the workout & also allows
+# a note input for additional context.  
 class WorkoutLog(models.Model):
 
     log_name = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE)
@@ -44,6 +53,9 @@ class WorkoutLog(models.Model):
         return self.log_name.template_name
 
 
+# Model for tracking recently performed workout templates.
+# The most recent workouts are displayed at the top of the list
+# and the ordering can be modified by changing the 'ordering' attribute of the Meta class.
 class Tracker(models.Model):
 
     recent_workouts = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE, related_name='workout')
