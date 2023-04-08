@@ -1,0 +1,14 @@
+<h1>
+    User Dashboard
+</h1>
+<form>
+    {{ form }}
+    <input type="'submit" name="Add a Workout">
+</form>
+{% for templates in workout_templates %}
+<div>
+    <p>
+        {{ templates }}
+    </p>
+</div>
+{% endfor %}

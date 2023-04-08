@@ -39,7 +39,7 @@ class Exercises(models.Model):
 
 
 # A model for storing more precise details about the workout & also allows
-# a note input for additional context.  
+# a note input for additional context.
 class WorkoutLog(models.Model):
 
     log_name = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE)
@@ -62,7 +62,7 @@ class Tracker(models.Model):
 
     def __str__(self):
         return f"{self.recent_workouts.template_name} was recently performed"
-    
+
     class Meta:
         ordering = ['-recent_workouts']
         verbose_name_plural = 'Tracker'

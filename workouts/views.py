@@ -1,8 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import *
+from .forms import *
 
-# Create your views here.
 
-def home(request):
-    return render(request, 'base.html')
+def add_workout(request):
+    workout_templates = WorkoutTemplate.objects.all()
+
+    form = AddWorkout()
+    context = {
+        'workout_templates': workout_templates
+    }
+    return render(request, 'workouts/user-dashboard.html', context)
+
+
+# def home(request):
+#     return render(request, 'base.html')
