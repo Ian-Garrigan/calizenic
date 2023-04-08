@@ -4,5 +4,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def my_app(request):
-    return HttpResponse('Calizenic landing page')
+def home(request):
+    return render(request, 'base.html')

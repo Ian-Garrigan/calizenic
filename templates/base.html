@@ -1,12 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
     <title>Calizenics</title>
 </head>
 <body>
-    <h1>What we are all about</h1>
+    <h1>Calizenics</h1>
+    <br>
+    <p><strong>Plan your workout and track your progress.<br> A simple tool for calisthenics enthusiasts.</strong></p2>
 </body>
 </html>
