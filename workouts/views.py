@@ -10,7 +10,7 @@ def add_workout(request):
 
     form = AddWorkout()
     context = {
-        'workout_templates': workout_templates
+        'workout_templates': workout_templates, 'form': form
     }
     return render(request, 'workouts/user-dashboard.html', context)
 

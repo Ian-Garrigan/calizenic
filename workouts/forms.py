@@ -8,4 +8,4 @@ class AddWorkout(forms.ModelForm):
 
     class Meta:
         model = WorkoutTemplate
-        fields = '__all__'
+        fields = ['template_name', 'was_performed', ]

@@ -3,12 +3,17 @@
 </h1>
 <form>
     {{ form }}
-    <input type="'submit" name="Add a Workout">
+    <input type="submit" name="Add a Workout">
 </form>
 {% for templates in workout_templates %}
 <div>
     <p>
-        {{ templates }}
+        {{ templates.athlete_id }}
+        {{ templates.time_created }}
+        {{ templates.total_completed }}
+        {{ templates.was_performed }}
+        {{ templates.status }}
+        {{ templates.template_name }}
     </p>
 </div>
 {% endfor %}
