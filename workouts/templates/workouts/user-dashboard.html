@@ -1,19 +1,12 @@
-<h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>
     User Dashboard
-</h1>
-<form>
-    {{ form }}
+</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
     <input type="submit" name="Add a Workout">
 </form>
-{% for templates in workout_templates %}
-<div>
-    <p>
-        {{ templates.athlete_id }}
-        {{ templates.time_created }}
-        {{ templates.total_completed }}
-        {{ templates.was_performed }}
-        {{ templates.status }}
-        {{ templates.template_name }}
-    </p>
-</div>
-{% endfor %}
+{% endblock %}
