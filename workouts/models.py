@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
@@ -31,7 +32,7 @@ class WorkoutTemplate(models.Model):
 class Exercises(models.Model):
 
     exercise_name = models.CharField(max_length=50)
-    exercise_image = CloudinaryField('image')
+    exercise_image = CloudinaryField('image', blank=True)
     muscle_group = models.CharField(max_length=50)
 
     def __str__(self):
@@ -51,6 +52,9 @@ class WorkoutLog(models.Model):
     sets = models.PositiveIntegerField(default=3)
     reps = models.PositiveIntegerField(default=5)
     note = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse('workouts:create-workout-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.log_name.template_name
