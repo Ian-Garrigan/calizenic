@@ -16,8 +16,11 @@ class WorkoutTemplate(models.Model):
     template_name = models.CharField(max_length=50, default='New workout template')
     time_created = models.DateTimeField(auto_now_add=True)
     total_completed = models.PositiveIntegerField(default=0)
-    was_performed = models.BooleanField()
+    was_performed = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-time_created']
 
     def __str__(self):
         return self.template_name

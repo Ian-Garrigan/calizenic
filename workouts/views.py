@@ -19,7 +19,10 @@ class UserDashboard(TemplateView):
 
 class UserTemplatesList(ListView):
     model = WorkoutTemplate
+    context_object_name = 'user_templates'
+    queryset = WorkoutTemplate.objects.filter(status=0).order_by('-time_created')
     template_name = 'user-templates-list.html'
+    paginate_by = 2
 
 
 
