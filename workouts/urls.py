@@ -6,8 +6,8 @@ app_name = 'workouts'
 
 urlpatterns = [
     path('', views.HomeView.as_view()),
-    path('user-dashboard/', views.UserDashboard.as_view(), name='workouts'),
+    path('user-dashboard/', views.UserDashboard.as_view(), name='user-dashboard'),
     path('user-templates-list/', views.UserTemplatesList.as_view(), name='user-templates'),
-    path('create-workout/', views.create_workout, name='create-workout'),
+    path('create-workout/', views.CreateWorkout.as_view(), name='create-workout'),
     path('tracker-list/', views.tracker_list, name='tracker'),
 ]

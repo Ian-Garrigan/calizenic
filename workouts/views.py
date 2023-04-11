@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.generic import (TemplateView, ListView)
+from django.contrib import messages
+from django.views.generic import (TemplateView, ListView, CreateView)
 
 from .models import *
 from .forms import *
@@ -22,9 +23,29 @@ class UserTemplatesList(ListView):
     context_object_name = 'user_templates'
     queryset = WorkoutTemplate.objects.filter(status=0).order_by('-time_created')
     template_name = 'user-templates-list.html'
-    paginate_by = 2
+    paginate_by = 4
 
 
+class CreateWorkout(CreateView):
+    model = WorkoutLog
+    context_object_name = 'create_workout'
+    template_name = 'create-workout.html'
+    fields = ['exercise_type',]
+
+    def form_valid(self, form):
+
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            f'{self.log_name} has been created'
+        )
+
+        return super().form_valid(form)
+
+
+# def create_workout(request):
+#     return render(request, 'workouts/create-workout.html')
+    
 
 # def user_dashboard(request): 
 #     return render(request, 'workouts/user-dashboard.html')
@@ -32,10 +53,6 @@ class UserTemplatesList(ListView):
 
 # def user_templates_list(request):
 #     return render(request, 'workouts/user-templates-list.html')
-
-
-def create_workout(request):
-    return render(request, 'workouts/create-workout.html')
 
 
 def tracker_list(request):
