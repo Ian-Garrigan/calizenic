@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block content %}
+
+    <h2>
+        User Dashboard
+    </h2>
+    <a href="{% url 'workouts:user-templates' %}" role="button" class="btn btn-primary w-100 mb-2">Workout templates</a>
+    <a href="" role="button" class="btn btn-secondary w-100">Create a workout</a>
+
+{% endblock content %}
