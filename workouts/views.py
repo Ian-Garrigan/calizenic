@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views.generic import (TemplateView, ListView, CreateView)
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
 
 from .models import *
 from .forms import *
@@ -30,18 +30,22 @@ class CreateWorkout(CreateView):
     model = WorkoutLog
     context_object_name = 'create_workout'
     template_name = 'create-workout.html'
-    fields = ['exercise_type',]
+    fields = ['log_name', 'exercise_type', 'weight', 'sets', 'reps', 'note']
 
     def form_valid(self, form):
 
         messages.add_message(
             self.request,
             messages.SUCCESS,
-            f'{self.log_name} has been created'
+            'Workout template has been created'
         )
 
         return super().form_valid(form)
 
+
+class CreateWorkoutDetail(DetailView):
+    model = WorkoutLog
+    template_name = 'detail-create-workout.html'
 
 # def create_workout(request):
 #     return render(request, 'workouts/create-workout.html')
