@@ -12,7 +12,7 @@
 <ul class="list-group">
   {% for template in user_templates %}
   <li class="list-group-item">
-    <a class="text-reset" href="{{ template.get_absolute_url }}">{{ template }} - {{ template.athlete_id }}</a>
+    <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }} - {{ template.athlete_id }}</a>
   </li>
   {% endfor %}
 </ul>
