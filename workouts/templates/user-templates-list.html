@@ -3,7 +3,7 @@
 {% block title %} Templates{% endblock %}
 
 {% block content %}
-<h2>
+<h2 style="color: mediumvioletred">
   Workout Templates:
 </h2>
 
@@ -39,5 +39,9 @@
 <p>There are no workout templates to display.</p>
 
 {% endif %}
+
+<p class="pt-2">
+  <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary w-100">Return to Dashboard</a>
+</p>
 
 {% endblock content %}
