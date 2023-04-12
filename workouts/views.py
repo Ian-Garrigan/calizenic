@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -68,6 +68,15 @@ class EditWorkout(SingleObjectMixin, FormView):
     #     return EditWorkoutFormset(**self.get_form_kwargs(), instance=)
     
 
+def view_logs(request, id):
+    title = get_object_or_404(WorkoutTemplate, id=id)
+    logs = WorkoutLog.objects.filter(log_name=id).order_by('-id')[:3]
+    template = 'view-logs.html'
+    context = {
+        'title': title,
+        'logs': logs
+    }
+    return render(request, template, context)
 
 
 def tracker_list(request):

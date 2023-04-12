@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title.template_name }}{% endblock %}
+
+{% block content %}
+
+{% for log in logs %}
+
+{{ log.log_name }} /
+{{ log.exercise_type }} /
+{{ log.weight }} /
+{{ log.sets }} / 
+{{ log.reps }} / 
+{{ log.note }} 
+<!-- link to edit or mini form to allow user to save workout to tracker.html -->
+<a href="{% url 'workouts:edit-workout' log.id %}" class="btn btn-secondary m-3">Complete?</a>
+<br>
+
+{% empty %}
+No logs found {{ title.template_name }}
+{% endfor %}
+
+{% endblock content %}
