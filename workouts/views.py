@@ -4,7 +4,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView, FormView)
+from django.views.generic.detail import SingleObjectMixin
 
 from .models import *
 from .forms import *
@@ -47,16 +48,20 @@ class CreateWorkoutDetail(DetailView):
     model = WorkoutLog
     template_name = 'detail-create-workout.html'
 
-# def create_workout(request):
-#     return render(request, 'workouts/create-workout.html')
+
+class EditView(SingleObjectMixin, FormView):
+    model = WorkoutLog
+    template_name = 'edit-workout.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=WorkoutLog.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=WorkoutLog.objects.all())
+        return super().post(request, *args, **kwargs)
     
 
-# def user_dashboard(request): 
-#     return render(request, 'workouts/user-dashboard.html')
-
-
-# def user_templates_list(request):
-#     return render(request, 'workouts/user-templates-list.html')
 
 
 def tracker_list(request):
