@@ -22,6 +22,14 @@
     {{ field.label_tag }} {{ field }}
   {% endfor %}
   
+  <p class="pt-2">
+    <button type="submit" class="btn btn-primary w-100 mb-2">
+      Create workout template
+    </button>
+    <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary w-100">
+      Return to Dashboard
+    </a>
+  </p>
 </form>
 
 {% endblock content %}

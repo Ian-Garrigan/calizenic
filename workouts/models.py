@@ -54,7 +54,7 @@ class WorkoutLog(models.Model):
     note = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('workouts:create-workout-detail', kwargs={'pk': self.pk})
+        return reverse('workouts:detail-create-workout', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.log_name.template_name
