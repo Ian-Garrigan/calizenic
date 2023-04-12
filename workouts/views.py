@@ -64,8 +64,8 @@ class EditWorkout(SingleObjectMixin, FormView):
         self.object = self.get_object(queryset=WorkoutLog.objects.all())
         return super().post(request, *args, **kwargs)
 
-    def get_form(, form_class=None):
-        return EditWorkoutFormset(**self.get_form_kwargs(), instance=)
+    # def get_form(, form_class=None):
+    #     return EditWorkoutFormset(**self.get_form_kwargs(), instance=)
     
 
 
