@@ -45,7 +45,7 @@ class CreateWorkout(CreateView):
         return super().form_valid(form)
 
 
-# View all the log entries associated with a workout template
+# View the log entries associated with a workout template
 # and update,edit, delete them inside a single form
 class CreateWorkoutDetail(DetailView):
     model = WorkoutLog
@@ -64,9 +64,25 @@ class EditWorkout(SingleObjectMixin, FormView):
         self.object = self.get_object(queryset=WorkoutLog.objects.all())
         return super().post(request, *args, **kwargs)
 
-    # def get_form(, form_class=None):
-    #     return EditWorkoutFormset(**self.get_form_kwargs(), instance=)
+    def get_form(self, form_class=None):
+        return WorkoutsFormset(self.get_object(queryset=WorkoutLog.objects.all()), **self.get_form_kwargs())
+
+    def form_valid(self, form):
+        form.save()
+
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            'Workout has been updated.'
+        )
+
+        return HttpResponse(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('workouts:user-templates')
+
     
+
 
 def view_logs(request, id):
     title = get_object_or_404(WorkoutTemplate, id=id)
