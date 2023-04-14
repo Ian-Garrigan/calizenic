@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -65,7 +65,7 @@ class EditWorkout(SingleObjectMixin, FormView):
         return super().post(request, *args, **kwargs)
 
     def get_form(self, form_class=None):
-        return WorkoutsFormset(self.get_object(queryset=WorkoutLog.objects.all()), **self.get_form_kwargs())
+        return WorkoutsFormset(**self.get_form_kwargs(), instance=self.object)
 
     def form_valid(self, form):
         form.save()
