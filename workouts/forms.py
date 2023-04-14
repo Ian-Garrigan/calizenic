@@ -1,8 +1,32 @@
 from django import forms
-from django.forms import inlineformset_factory
 
 from .models import *
 
 
-WorkoutsFormset = inlineformset_factory(WorkoutTemplate, WorkoutLog, fields=())
- 
+class WorkoutTemplateForm(forms.ModelForm):
+    class Meta:
+        model = WorkoutTemplate
+        fields = ('template_name', 'status')
+        labels = { 
+            'template name': 'Template Name',
+            'status': 'Status',
+        }
+
+
+class WorkoutLogForm(forms.ModelForm):
+    exercise_type = forms.ModelChoiceField(
+        queryset=Exercises.objects.all(),
+        label='Exercise Type',
+        required=True,
+        empty_label='Choose Exercise',
+    )
+
+    class Meta:
+        model = WorkoutLog
+        fields = ('exercise_type', 'weight', 'sets', 'reps', 'note')
+        labels = {
+            'weight': 'Weight',
+            'sets': 'Sets',
+            'reps': 'Reps',
+            'note': 'Note',
+        }

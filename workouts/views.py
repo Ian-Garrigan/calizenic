@@ -1,11 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.generic import (TemplateView, ListView, CreateView, DetailView, FormView)
-from django.views.generic.detail import SingleObjectMixin
 
 from .models import *
 from .forms import *
@@ -52,38 +50,6 @@ class CreateWorkoutDetail(DetailView):
     template_name = 'detail-create-workout.html'
 
 
-class EditWorkout(SingleObjectMixin, FormView):
-    model = WorkoutLog
-    template_name = 'edit-workout.html'
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object(queryset=WorkoutLog.objects.all())
-        return super().get(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object(queryset=WorkoutLog.objects.all())
-        return super().post(request, *args, **kwargs)
-
-    def get_form(self, form_class=None):
-        return WorkoutsFormset(**self.get_form_kwargs(), instance=self.object)
-
-    def form_valid(self, form):
-        form.save()
-
-        messages.add_message(
-            self.request,
-            messages.SUCCESS,
-            'Workout has been updated.'
-        )
-
-        return HttpResponse(self.get_success_url())
-
-    def get_success_url(self):
-        return reverse('workouts:user-templates')
-
-    
-
-
 def view_logs(request, id):
     title = get_object_or_404(WorkoutTemplate, id=id)
     logs = WorkoutLog.objects.filter(log_name=id).order_by('-id')[:3]
@@ -93,6 +59,31 @@ def view_logs(request, id):
         'logs': logs
     }
     return render(request, template, context)
+
+
+# Allows for editing and updating of a specific workout template 
+def edit_workout(request, id):
+    workout_template = get_object_or_404(WorkoutTemplate, id=id)
+    workout_log = get_object_or_404(WorkoutLog, log_name=workout_template)
+
+    if request.method == 'POST':
+        workout_template_form = WorkoutTemplateForm(request.POST, instance=workout_template)
+        workout_log_form = WorkoutLogForm(request.POST, instance=workout_log)
+        if workout_template_form.is_valid() and workout_log_form.is_valid():
+            workout_template_form.save()
+            workout_log_form.save()
+            messages.success(request, 'Your workout template has been updated')
+            return redirect('user-templates-list.html')
+    else:
+        workout_template_form = WorkoutTemplateForm(instance=workout_template)
+        workout_log_form = WorkoutLogForm(instance=workout_log)
+
+    context = {
+        'workout_template_form': workout_template_form,
+        'workout_log_form': workout_log_form,
+    }
+
+    return render(request, 'edit-workout.html', context)
 
 
 def tracker_list(request):
