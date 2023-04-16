@@ -28,9 +28,10 @@ class UserTemplatesList(ListView):
 # Form for creating workout template and display a confirmation message
 class CreateWorkout(CreateView):
     model = WorkoutLog
+    form_class = CreateWorkoutForm
     context_object_name = 'create_workout'
     template_name = 'create-workout.html'
-    fields = ['log_name', 'exercise_type', 'weight', 'sets', 'reps', 'note']
+    
 
     def form_valid(self, form):
 
@@ -39,12 +40,12 @@ class CreateWorkout(CreateView):
             messages.SUCCESS,
             'Workout template has been created'
         )
+        
+        response = super().form_valid(form)
+        return response
 
-        return super().form_valid(form)
 
-
-# View the log entries associated with a workout template
-# and update,edit, delete them inside a single form
+# Confirmation of workout template details made
 class CreateWorkoutDetail(DetailView):
     model = WorkoutLog
     template_name = 'detail-create-workout.html'
@@ -59,8 +60,8 @@ def view_logs(request, id):
         'logs': logs
     }
     return render(request, template, context)
-
-
+    
+    
 # Allows for editing and updating of a specific workout template 
 def edit_workout(request, id):
     workout_template = get_object_or_404(WorkoutTemplate, id=id)

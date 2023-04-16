@@ -10,7 +10,7 @@ urlpatterns = [
     path('user-templates-list/', views.UserTemplatesList.as_view(), name='user-templates'),
     path('create-workout/', views.CreateWorkout.as_view(), name='create-workout'),
     path('create-workout/<int:pk>/', views.CreateWorkoutDetail.as_view(), name='detail-create-workout'),
-    path('edit-workout/<int:pk>/', views.EditWorkout.as_view(), name='edit-workout'),
+    path('edit-workout/<int:pk>', views.edit_workout, name='edit-workout'),
     path('view-logs/<int:id>/', views.view_logs, name='view-logs'),
     path('tracker-list/', views.tracker_list, name='tracker'),
 ]

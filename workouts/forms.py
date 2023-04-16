@@ -3,6 +3,19 @@ from django import forms
 from .models import *
 
 
+class CreateWorkoutForm(forms.ModelForm):
+    class Meta:
+        model = WorkoutLog
+        exclude = ()
+        labels = {
+            'log_name': 'Template Name',
+            'weight': 'Weight(Kg)',
+            'sets': 'Number of Sets',
+            'reps': 'Number of Reps',
+            'note': 'Workout Note',
+        }
+
+
 class WorkoutTemplateForm(forms.ModelForm):
     class Meta:
         model = WorkoutTemplate
