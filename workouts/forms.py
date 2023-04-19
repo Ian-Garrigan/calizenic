@@ -15,29 +15,46 @@ class CreateWorkoutTemplateForm(forms.Form):
     muscle_group = forms.CharField(
         label='Muscle Group',
         max_length=50,
-        widget=forms.TextInput(attrs={'readonly': 'readonly'}),
+        widget=forms.TextInput(attrs={'readonly': True}),
     )
     weight = forms.DecimalField(
         label='Weight(Kg)',
         max_digits=3,
         decimal_places=1,
-        initial=00.0,
+        min_value=0,
     )
-    sets = forms.IntegerField(
+    sets = forms.PositiveIntegerField(
         label='Number of Sets',
         initial=3,
     )
-    reps = forms.IntegerField(
+    reps = forms.PositiveIntegerField(
         label='Number of Reps',
         initial=5,
     )
-    note = forms.Textarea(
-        attrs={'rows': 6},
+    note = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 6}),
         label='Note',
         required=False,
         initial='You can include any additional notes or comments about your workout here, '
                 'such as modifications you made to the routine or reminders for future sessions.',
     )
+
+    def unique_template_name(self):
+        new_template_name = self.cleaned_data['template_name']
+        if WorkoutTemplate.objects.filter(template_name=new_template_name).exists():
+            raise forms.ValidationError('You are already using that template name.'
+                                        'Please choose a different one.')
+
+        return new_template_name
+
+
+class WorkoutLogMultiWidget(forms.widgets.MultiWidget):
+    def __init__(self, attrs=None):
+        widgets = [
+            forms.DecimalField(),
+            forms.PositiveIntegerField(),
+            forms.PositiveIntegerField(),
+        ]
 
 
 # class CreateWorkoutForm(forms.ModelForm):
