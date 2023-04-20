@@ -14,7 +14,7 @@ STATUS = ((0, 'Template'), (1, 'Add to Tracker'))
 class WorkoutTemplate(models.Model):
 
     athlete_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='athlete')
-    template_name = models.CharField(max_length=50)
+    template_name = models.CharField(max_length=50, unique=True)
     time_created = models.DateField(auto_now_add=True)
     total_completed = models.PositiveIntegerField(default=0)
     was_performed = models.BooleanField(default=False)
