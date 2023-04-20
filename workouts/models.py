@@ -48,9 +48,9 @@ class WorkoutLog(models.Model):
 
     log_name = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE)
     exercise_type = models.ForeignKey(Exercises, on_delete=models.CASCADE)
-    weight = models.DecimalField(default=10.0, max_digits=3, decimal_places=1)
-    sets = models.PositiveIntegerField(default=3)
-    reps = models.PositiveIntegerField(default=5)
+    weight = models.DecimalField(max_digits=3, decimal_places=1)
+    sets = models.PositiveIntegerField()
+    reps = models.PositiveIntegerField()
     note = models.TextField()
 
     def get_absolute_url(self):
