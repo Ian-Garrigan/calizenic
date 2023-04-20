@@ -2,6 +2,12 @@
 
 {% block title %} Templates{% endblock %}
 
+{% block calltoaction %}
+<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-dashboard' %}" role="button">Return to dashboard</a>
+<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
+<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+{% endblock %}
+
 {% block content %}
 <h2 style="color: mediumvioletred">
   Workout Templates:
@@ -12,7 +18,10 @@
 <ul class="list-group">
   {% for template in user_templates %}
   <li class="list-group-item">
-    <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }} - {{ template.athlete_id }}</a>
+    <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }}</a>
+  </li>
+  <li>
+  Created On: {{ template.time_created }} / Total completed: {{ template.total_completed }} 
   </li>
   {% endfor %}
 </ul>
@@ -39,9 +48,5 @@
 <p>There are no workout templates to display.</p>
 
 {% endif %}
-
-<p class="pt-2">
-  <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary w-100">Return to Dashboard</a>
-</p>
 
 {% endblock content %}

@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ title.template_name }}{% endblock %}
+{% block title %} {{ title.athlete_id }}'s logs{% endblock %}
+
+{% block calltoaction %}
+<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-dashboard' %}" role="button">Return to dashboard</a>
+<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
+<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+{% endblock %}
 
 {% block content %}
 

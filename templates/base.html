@@ -33,7 +33,7 @@
             {% block pageactive %}<a class="nav-link active" aria-current="page" href="{% url 'workouts:home' %}">Home</a>{% endblock %}
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="{% url 'workouts:user-dashboard' %}">Link (development purposes)</a>
           </li>
           <li class="nav-item dropend">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
@@ -57,9 +57,9 @@
     <div class="container text-white">
 
       <h1 class="display-4">Calisthenics is life</h1>
-      <p class="lead">Start Now</p>
+      <p class="lead">Plan your workout and track your progress.<br> A simple tool for calisthenics enthusiasts.</p>
       <hr class="my-4">
-      <p>Plan your workout and track your progress.<br> A simple tool for calisthenics enthusiasts.</p>
+      <p>Start Today</p>
       {% block calltoaction %}<a class="btn btn-primary bg-gradient btn-lg" href="#" role="button">Learn more</a>{% endblock %}
 
     </div>

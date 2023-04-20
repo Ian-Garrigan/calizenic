@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
+{% block pageactive %}<a class="nav-link" href="{% url 'workouts:home' %}">Home</a>{% endblock %}
+
 {% block title %} Dashboard{% endblock %}
 
-{% block content %}
+{% block calltoaction %}
+<a class="btn btn-primary btn-sm" href="#" role="button">View Workout Templates</a>
+<a class="btn btn-success btn-sm" href="#" role="button">Create a Workout Template</a>
+<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+{% endblock %}
 
-    <h2 style="color: darkorange">
-        User Dashboard
-    </h2>
-    <a href="{% url 'workouts:user-templates' %}" role="button" class="btn btn-primary w-100 mb-2">Workout templates</a>
-    <a href="{% url 'workouts:create-workout' %}" role="button" class="btn btn-secondary w-100">Create a workout</a>
+{% block content %}
 
 {% endblock content %}

@@ -2,11 +2,16 @@
 
 {% block title %} Create Workout{% endblock %}
 
+{% block calltoaction %}
+<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button"></a>
+<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button"></a>
+{% endblock %}
+
 {% block content %}
 <h2 style="color: forestgreen">
   Create a workout:
 </h2>
-
+<!-- FORM -->
 <form method="POST" action="">
   {% for hidden_field in form.hidden_fields %}
     {{ hidden_field.errors }}
