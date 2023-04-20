@@ -16,6 +16,30 @@ class HomeView(TemplateView):
 class UserDashboard(TemplateView):
     template_name = 'user-dashboard.html'
 
+
+def create_workout_template(request):
+    if request.method == 'POST':
+        workout_name = DataFromWorkoutTemplate(request.POST)
+        workout_entries = DataFromWorkoutLogAndExercises(request.POST)
+        if workout_name.is_valid() and workout_entries.is_valid():
+            workout_name.save()
+            workout_entries.save()
+            messages.success(request, f'"{workout_name.cleaned_data["template_name"]}" has been created')
+            return redirect('user-dashboard')
+    else:
+        messages.error(request, 'An error occurred, please try again')
+        workout_name = DataFromWorkoutTemplate()
+        workout_entries = DataFromWorkoutLogAndExercises()
+        context = { 
+            'workout_name': workout_name,
+            'workout_entries': workout_entries
+        }
+
+    return render(request, 'home.html', context)
+
+
+
+
 # View a list of all the templates a user can choose to use and mark
 # as complete(send to tracker)
 class UserTemplatesList(ListView):
@@ -24,31 +48,6 @@ class UserTemplatesList(ListView):
     queryset = WorkoutTemplate.objects.filter(status=0).order_by('-time_created')
     template_name = 'user-templates-list.html'
     paginate_by = 4
-
-# Form for creating workout template and display a confirmation message
-# class CreateWorkout(CreateView):
-#     model = WorkoutLog
-#     form_class = CreateWorkoutForm
-#     context_object_name = 'create_workout'
-#     template_name = 'create-workout.html'
-    
-
-#     def form_valid(self, form):
-
-#         messages.add_message(
-#             self.request,
-#             messages.SUCCESS,
-#             'Workout template has been created'
-#         )
-        
-#         response = super().form_valid(form)
-#         return response
-
-
-# Confirmation of workout template details made
-class CreateWorkoutDetail(DetailView):
-    model = WorkoutLog
-    template_name = 'detail-create-workout.html'
 
 
 def view_logs(request, id):
