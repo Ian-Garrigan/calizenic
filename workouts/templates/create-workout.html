@@ -1,40 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %} Create Workout{% endblock %}
-
-{% block calltoaction %}
-<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button"></a>
-<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button"></a>
-{% endblock %}
+{% block title %}Create Workout{% endblock %}
 
 {% block content %}
-<h2 style="color: forestgreen">
-  Create a workout:
-</h2>
-<!-- FORM -->
-<form method="POST" action="">
-  {% for hidden_field in form.hidden_fields %}
-    {{ hidden_field.errors }}
-    {{ hidden_field }}
-  {% endfor %}
-
-  {% csrf_token %}
-
-  {{ form.non_form_errors }}
-
-  {% for field in form %}
-    {{ field.errors }}
-    {{ field.label_tag }} {{ field }}
-  {% endfor %}
-  
-  <p class="pt-2">
-    <button type="submit" class="btn btn-primary w-100 mb-2">
-      Create workout template
-    </button>
-    <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary w-100">
-      Return to Dashboard
-    </a>
-  </p>
-</form>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ul class="messages mt-4">
+        {% for message in messages %}
+          <li class="{{ message.tags }} test-success"><p class="text-success">{{ message }} &#x2705;</p></li>
+        {% endfor %}
+      </ul>
+      <div class="form-container">
+            <h2 class="text-center" style="color: steelblue">
+              Create a workout:
+            </h2>
+            <!-- FORM -->
+            <form method="POST" action="" autocomplete="off">
+              {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field.errors }}
+                {{ hidden_field }}
+              {% endfor %}
+    
+              {% csrf_token %}
+    
+              {{ form.non_form_errors }}
+    
+              <div class="row">
+                {% for field in form1 %}
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      {{ field.label_tag }} {{ field }}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+    
+              <div class="row">
+                {% for field in form2 %}
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      {{ field.label_tag }} {{ field }}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">
+                  Create workout template
+                </button>
+                <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary">
+                  Return to Dashboard
+                </a>
+              </div>
+    
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock content %}

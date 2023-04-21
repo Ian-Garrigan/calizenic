@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView, FormView)
+from django.views.generic import (TemplateView, ListView)
 
 from .models import *
 from .forms import *
@@ -30,9 +30,10 @@ def create_workout_template(request):
             workout_name_instance.save()
             workout_entries_instance = workout_entries.save(commit=False)
             workout_entries_instance.log_name = workout_name_instance
+            workout_entries_instance.exercise_type = workout_entries.cleaned_data['exercise_dropdown']
             workout_entries_instance.save()
             messages.success(request, 'Your Workout template was created')
-            return redirect('user-dashboard')
+            return redirect('workouts:create-workout')
         else:
             messages.error(request, 'An error occurred, please try again')
             print(workout_name.errors)
@@ -49,9 +50,6 @@ def create_workout_template(request):
 
 
 
-
-# View a list of all the templates a user can choose to use and mark
-# as complete(send to tracker)
 class UserTemplatesList(ListView):
     model = WorkoutTemplate
     context_object_name = 'user_templates'
