@@ -53,9 +53,9 @@ def create_workout_template(request):
 class UserTemplatesList(ListView):
     model = WorkoutTemplate
     context_object_name = 'user_templates'
-    queryset = WorkoutTemplate.objects.filter(status=0).order_by('-time_created')
+    queryset = WorkoutTemplate.objects.all().order_by('-time_created')
     template_name = 'user-templates-list.html'
-    paginate_by = 4
+    paginate_by = 6
 
 
 def view_logs(request, id):
