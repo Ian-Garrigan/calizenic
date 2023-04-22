@@ -13,8 +13,8 @@ STATUS = ((0, 'Template'), (1, 'Add to Tracker'))
 # their own workout template and reuse it multiple times.
 class WorkoutTemplate(models.Model):
 
-    athlete_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='athlete')
-    template_name = models.CharField(max_length=50, unique=True)
+    athlete_instance = models.ForeignKey(User, on_delete=models.CASCADE, related_name='athlete')
+    template_name = models.CharField(max_length=50)
     time_created = models.DateField(auto_now_add=True)
     total_completed = models.PositiveIntegerField(default=0)
     was_performed = models.BooleanField(default=False)
