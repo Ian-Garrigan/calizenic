@@ -2,28 +2,34 @@
 
 {% block title %} {{ title.athlete_id }}'s logs{% endblock %}
 
-{% block calltoaction %}
-<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-dashboard' %}" role="button">Return to dashboard</a>
-<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
-<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+{% block jumbotron %}
 {% endblock %}
 
 {% block content %}
 
-{% for log in logs %}
+<div class="list-group">
+    {% for log in logs %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ log.log_name }}</h5>
+            <small>{{ log.exercise_type }}</small>
+        </div>
+        <div class="d-flex w-100 justify-content-between">
+            <p class="mb-1">Weight: {{ log.weight }} kg</p>
+            <p class="mb-1">Sets: {{ log.sets }}</p>
+            <p class="mb-1">Reps: {{ log.reps }}</p>
+        </div>
+    </a>
 
-{{ log.log_name }} /
-{{ log.exercise_type }} /
-{{ log.weight }} /
-{{ log.sets }} / 
-{{ log.reps }} / 
-{{ log.note }} 
-<!-- link to edit or mini form to allow user to save workout to tracker.html -->
-<a href="{% url 'workouts:edit-workout' log.id %}" class="btn btn-secondary m-3">Edit</a>
-<br>
+        <div class="sticky-note">
+            <h5>Note:</h5>
+            <p>{{ log.note }}</p>
+        </div>
+    <br>
+    {% empty %}
+    <p>No logs found {{ title.template_name }}</p>
+    {% endfor %}
+</div>
 
-{% empty %}
-No logs found {{ title.template_name }}
-{% endfor %}
 
 {% endblock content %}
