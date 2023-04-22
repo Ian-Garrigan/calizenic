@@ -5,8 +5,8 @@
 {% block title %} Dashboard{% endblock %}
 
 {% block calltoaction %}
-<a class="btn btn-primary btn-sm" href="#" role="button">View Workout Templates</a>
-<a class="btn btn-success btn-sm" href="#" role="button">Create a Workout Template</a>
+<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-templates-list' %}" role="button">View Workout Templates</a>
+<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
 <a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
 {% endblock %}
 

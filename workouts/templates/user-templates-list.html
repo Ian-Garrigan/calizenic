@@ -2,51 +2,79 @@
 
 {% block title %} Templates{% endblock %}
 
-{% block calltoaction %}
-<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-dashboard' %}" role="button">Return to dashboard</a>
-<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
-<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+{% block jumbotron %}
 {% endblock %}
 
 {% block content %}
-<h2 style="color: mediumvioletred">
-  Workout Templates:
-</h2>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-11 mx-auto">
+      <h2 class="text-primary mb-4">Workout Templates:</h2>
 
-{% if user_templates %}
-
-<ul class="list-group">
-  {% for template in user_templates %}
-  <li class="list-group-item">
-    <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }}</a>
-  </li>
-  <li>
-  Created On: {{ template.time_created }} / Total completed: {{ template.total_completed }} 
-  </li>
-  {% endfor %}
-</ul>
-<div class="pagination">
-  <span class="step-links">
-    {% if page_obj.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-    {% endif %}
-
-    <span class="current">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-    </span>
-
-    {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">next</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-    {% endif %}
-  </span>
+      <nav aria-label="Page navigation" class="mb-4 pagination-right">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          <li class="page-item disabled"><a class="page-link">Page {{ page_obj.number }} of
+              {{ page_obj.paginator.num_pages }}.</a></li>
+          {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% if user_templates %}
+      <div class="row">
+        {% for template in user_templates %}
+        <div class="col-12 mb-4">
+          <div class="card">
+            <div class="card-header bg-light text-primary">
+              <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }}</a>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Created On: {{ template.time_created }} / Total completed:
+                {{ template.total_completed }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          <li class="page-item disabled"><a class="page-link">Page {{ page_obj.number }} of
+              {{ page_obj.paginator.num_pages }}.</a></li>
+          {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% else %}
+      <p class="lead">There are no workout templates to display.</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
-
-{% else %}
-
-<p>There are no workout templates to display.</p>
-
-{% endif %}
-
 {% endblock content %}
