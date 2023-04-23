@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1682090758/favicon_htdmdu.ico">
+  <link rel="icon" type="image/x-icon"
+    href="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1682090758/favicon_htdmdu.ico">
   <!-- css link -->
   {% block css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -22,19 +23,27 @@
   <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-primary bg-gradient">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'workouts:home' %}">
-        <img src="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1681928298/calizenic-logo_lxswmb.png" class="d-inline-block align-top"
-          width="30" height="30" />Calizenic</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1681928298/calizenic-logo_lxswmb.png"
+          class="d-inline-block align-top" width="35" height="35" />Calizenic</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
         <ul class="navbar-nav me-auto mb-2">
           <li class="nav-item">
-            {% block pageactive %}<a class="nav-link active" aria-current="page" href="{% url 'workouts:home' %}">Home</a>{% endblock %}
+            {% block pageactive %}<a class="nav-link active" aria-current="page" href="{% url 'workouts:home' %}">
+              {% if request.resolver_match.url_name != 'home' %} Home
+              {% endif %}
+            </a>{% endblock %}
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'workouts:user-dashboard' %}">Link (development purposes)</a>
+            <a class="nav-link" href="{% url 'workouts:user-dashboard' %}">
+              {% if request.resolver_match.url_name == 'home' %}
+              LOGIN/Dashboard
+              {% endif %}
+            </a>
           </li>
           <li class="nav-item dropend">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
@@ -52,16 +61,20 @@
   <div class="jumbotron jumbotron-fluid bg-dark">
 
     <div class="jumbotron-background">
-      <img src="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1681930020/stone-2127669_1920_pftpky.png" class="blur ">
+      <img src="https://res.cloudinary.com/dfwhnlt1s/image/upload/v1681930020/stone-2127669_1920_pftpky.png"
+        class="blur ">
     </div>
 
     <div class="container text-white">
 
-      <h1 class="display-4">Calisthenics is life</h1>
-      <p class="lead">Plan your workout and track your progress.<br> A simple tool for calisthenics enthusiasts.</p>
+      <h1 class="display-4">United by calisthenics</h1>
+      <p class="lead">Embark on a transformative journey to unlock your true potential and become the strongest version
+        of yourself.
+        <br>Calizenic is a simple tool for calisthenics enthusiasts.</p>
       <hr class="my-4">
       <p>Start Today</p>
-      {% block calltoaction %}<a class="btn btn-primary bg-gradient btn-lg" href="#" role="button">Learn more</a>{% endblock %}
+      {% block calltoaction %}<a class="btn btn-primary bg-gradient btn-lg" href="#" role="button">Learn
+        more</a>{% endblock %}
 
     </div>
 
@@ -71,72 +84,57 @@
 
 
   {% block content %}
-  <div class="container-fluid">
-    <div class="d-flex align-items-center py-5">
-      <div class="col-12 col-md-6 col-lg-4 mx-auto">
-      </div>
-    </div>
-  </div>
   {% endblock content %}
   <!-- Footer -->
-  <footer class="mt-auto bg-primary text-white">
-    <!-- Grid container -->
+  <footer class="py-3 mt-5 bg-primary text-white">
     <div class="container p-4">
-        <!--Grid row-->
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">About Title</h5>
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5>What is Calisthenics?</h5>
 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                    molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-                    aliquam voluptatem veniam, est atque cumque eum delectus sint!
-                </p>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Links</h5>
-
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#!" class="text-white">Line 1</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                    </li>
-                </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Contact Us</h5>
-                <p><i class="fa fa-envelope-o mr-3"></i> info@123.com</p>
-            </div>
-            <!--Grid column-->
+          <p>
+            Calisthenics involves using one's own body weight for resistance training, but weighted exercises can also
+            be incorporated for added variety and challenge. This combination of body-weight and weighted exercises can
+            help improve overall strength, endurance, and flexibility.
+          </p>
         </div>
-        <!--Grid row-->
-    </div>
-    <!-- Grid container -->
 
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © {% now "Y" %} Copyright:
-        <a class="text-white" href="https://github.com/Ian-Garrigan/calizenic">View my Github</a>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Line 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Contact Us</h5>
+          <p><i class="fa fa-envelope-o mr-3"></i> info@123.com</p>
+        </div>
+      </div>
     </div>
-    <!-- Copyright -->
-</footer>
-<!-- Footer -->
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © {% now "Y" %} Copyright:
+      <a class="text-white" href="https://github.com/Ian-Garrigan/calizenic">View my Github</a>
+    </div>
+  </footer>
+  <!-- Font Awesome Script -->
+  <script src="https://kit.fontawesome.com/f2bd25728d.js" crossorigin="anonymous"></script>
+  <!-- Footer -->
 </body>
+<!-- scripts -->
 <script src="{% static 'javascript/script.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
