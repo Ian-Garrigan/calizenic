@@ -18,19 +18,21 @@
         <hr>
         <p class="mb-2">
           {% blocktrans %}
-          New here? <a href="{{ signup_url }}" class="alert-link">Register</a> now to start your calisthenics adventure!
+          <i class="fa-solid fa-circle-info"></i> Don't have an account? <br>
           {% endblocktrans %}
         </p>
-        <p>Discover a new world of calisthenics workouts, unlock your potential.
+        <p>Discover a new world of calisthenics workouts & unlock your potential.
           <br>
-          Join our community of athletes and fitness enthusiasts today.</p>
+          Join our community of athletes and fitness enthusiasts today. <a href="{{ signup_url }}" class="alert-link">Register</a> here.</p>
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
           {{ form|crispy }}
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
-          <button class="btn btn-info" type="submit">{% trans "Sign In" %}</button>
+          <div class="text-end">
+          <button class="btn btn-info mb-3" type="submit">{% trans "Sign In" %}</button>
+        </div>
         </form>
       </div>
     </div>

@@ -9,7 +9,7 @@
 <div class="container my-4">
   <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 col-11 mx-auto">
-      <h2 class="text-primary mb-4">Workout Templates:</h2>
+      <h2 class="text-primary mb-4"><i class="fa-solid fa-bars-staggered fa-sm"></i> Workout Templates:</h2>
 
       <nav aria-label="Page navigation" class="mb-4 pagination-right">
         <ul class="pagination justify-content-center">
@@ -39,7 +39,7 @@
         <div class="col-12 mb-4">
           <div class="card">
             <div class="card-header bg-light text-primary">
-              <a class="text-reset" href="{% url 'workouts:view-logs' template.id %}">{{ template }}</a>
+              <a class="text-reset" href="{% url 'workouts:view-log' template.id %}">{{ template }}</a>
             </div>
             <div class="card-body">
               <p class="card-text">Created On: {{ template.time_created }} / Total completed:
@@ -72,7 +72,7 @@
         </ul>
       </nav>
       {% else %}
-      <p class="lead">There are no workout templates to display.</p>
+      <h2 class="lead">There are no workout templates to display.<i class="fa-solid fa-square-xmark fa-2xl" style="color: #c03411;"></i></h2>
       {% endif %}
     </div>
   </div>
