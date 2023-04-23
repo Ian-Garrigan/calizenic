@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}  
+{% load crispy_forms_tags %}
 {% block title %}Your Logs {% endblock %}
 
 {% block jumbotron %}
@@ -16,7 +16,7 @@
                 <a href="#" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ log.log_name }}</h5>
-                        <small>{{ log.exercise_type }}</small>
+                        <p>Exercise type: {{ log.exercise_type }}</p>
                     </div>
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">Weight: {{ log.weight }} kg</p>
@@ -28,16 +28,30 @@
                         <p>{{ log.note }}</p>
                     </div>
                 </a>
+                <hr>
+                <div class="alert alert-info">
+                    <label class="form-check-label" for="reverseCheck1">
+                        Here is the details of your workout template. You may follow the routine and check the box when
+                        it has been completed:
+                    </label>
+                    <div class="col-8">
+                    <div class="form-check form-check-reverse">
+                        <input class="form-check-input p-2" type="checkbox" value="" id="reverseCheck1"
+                            {% if log.log_name.was_performed %}checked{% endif %} onclick="logCheckboxValue(this)">
+                    </div>
+                    </div>
+                </div>
                 <br>
-                <p>Here is the details of your workout template. You may follow the routine and check the box when 
-                    it has been completed.{{ log.log_name.was_performed }}
-                </p>
+                <hr>
                 {% empty %}
                 <p><i class="fa-solid fa-square-xmark fa-2xl" style="color: #c03411;"></i></p>
                 <h2>Workout log entries do not exist. Empty template.</h2>
                 {% endfor %}
             </div>
         </div>
+        <script>
+            console.log("JavaScript file linked successfully");
+        </script>
     </div>
 </div>
 
