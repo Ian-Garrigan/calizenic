@@ -1,35 +1,44 @@
 {% extends 'base.html' %}
-
-{% block title %} {{ title.athlete_id }}'s logs{% endblock %}
+{% load crispy_forms_tags %}  
+{% block title %}Your Logs {% endblock %}
 
 {% block jumbotron %}
 {% endblock %}
 
 {% block content %}
 
-<div class="list-group">
-    {% for log in logs %}
-    <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ log.log_name }}</h5>
-            <small>{{ log.exercise_type }}</small>
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+            <h2 class="text-primary mb-4 text-start">Log Entries:</h2>
+            <div class="list-group">
+                {% for log in logs %}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ log.log_name }}</h5>
+                        <small>{{ log.exercise_type }}</small>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1">Weight: {{ log.weight }} kg</p>
+                        <p class="mb-1">Sets: {{ log.sets }}</p>
+                        <p class="mb-1">Reps: {{ log.reps }}</p>
+                    </div>
+                    <div class="sticky-note">
+                        <h6>Note:</h6>
+                        <p>{{ log.note }}</p>
+                    </div>
+                </a>
+                <br>
+                <p>Here is the details of your workout template. You may follow the routine and check the box when 
+                    it has been completed.{{ log.log_name.was_performed }}
+                </p>
+                {% empty %}
+                <p><i class="fa-solid fa-square-xmark fa-2xl" style="color: #c03411;"></i></p>
+                <h2>Workout log entries do not exist. Empty template.</h2>
+                {% endfor %}
+            </div>
         </div>
-        <div class="d-flex w-100 justify-content-between">
-            <p class="mb-1">Weight: {{ log.weight }} kg</p>
-            <p class="mb-1">Sets: {{ log.sets }}</p>
-            <p class="mb-1">Reps: {{ log.reps }}</p>
-        </div>
-    </a>
-
-        <div class="sticky-note">
-            <h5>Note:</h5>
-            <p>{{ log.note }}</p>
-        </div>
-    <br>
-    {% empty %}
-    <p>No logs found {{ title.template_name }}</p>
-    {% endfor %}
+    </div>
 </div>
-
 
 {% endblock content %}
