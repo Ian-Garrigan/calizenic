@@ -5,4 +5,3 @@ from .models import *
 admin.site.register(Exercises)
 admin.site.register(WorkoutTemplate)
 admin.site.register(WorkoutLog)
-admin.site.register(Tracker)

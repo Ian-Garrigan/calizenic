@@ -38,13 +38,19 @@
               {% endif %}
             </a>{% endblock %}
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'workouts:user-dashboard' %}">
-              {% if request.resolver_match.url_name == 'home' %}
-              LOGIN/Dashboard
-              {% endif %}
+            <a class="nav-link" href="{% url 'account_logout' %}">
+              Log Out
             </a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">
+              Login
+            </a>
+          </li>
+          {% endif %}
           <li class="nav-item dropend">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
               aria-expanded="false">Dropdown</a>
@@ -104,7 +110,7 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">Line 1</a>
+              <a href="{% url 'workouts:home' %}" class="text-white">DEV</a>
             </li>
             <li>
               <a href="#!" class="text-white">Link 2</a>
@@ -126,7 +132,7 @@
     </div>
 
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © {% now "Y" %} Copyright:
+      {% now "Y" %}:
       <a class="text-white" href="https://github.com/Ian-Garrigan/calizenic">View my Github</a>
     </div>
   </footer>
@@ -135,8 +141,8 @@
   <!-- Footer -->
 </body>
 <!-- scripts -->
-<script src="{% static 'javascript/script.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="{% static 'javascript/script.js' %}"></script>
 
 </html>
