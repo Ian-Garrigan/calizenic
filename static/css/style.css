@@ -68,11 +68,18 @@ img.blur {
   background-color: #ffa255;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin: 10px 5px;
+}
+
+#id_note { 
+  
 }
 
 .form-group label {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .btn-primary {
@@ -84,11 +91,6 @@ img.blur {
   background-color: #FF9800;
   border-color: #FF9800;
 }
-
-.messages li {
-  list-style: none;
-}
-
 
 .list-group-item {
   margin-bottom: 1rem;
@@ -115,6 +117,7 @@ a {
 a:hover {
   font-weight: bold;
 }
+
 
 .sticky-note {
   background-color: #f7e85a;
