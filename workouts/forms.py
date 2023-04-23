@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import *
 
 
@@ -10,6 +9,10 @@ class DataFromWorkoutTemplate(forms.ModelForm):
         labels = {
             'template_name': 'Template Name',
         }
+
+    def __init__(self, *args, **kwargs):
+        super(DataFromWorkoutTemplate, self).__init__(*args, **kwargs)
+        self.fields['template_name'].widget.attrs['placeholder'] = ' (e.g. Bicep Bonanza)'
 
 
 class DataFromWorkoutLogAndExercises(forms.ModelForm):
@@ -30,3 +33,10 @@ class DataFromWorkoutLogAndExercises(forms.ModelForm):
             'reps': 'Reps',
             'note': 'Note',
         }
+
+    def __init__(self, *args, **kwargs):
+        super(DataFromWorkoutLogAndExercises, self).__init__(*args, **kwargs)
+        self.fields['note'].widget.attrs['placeholder'] = 'e.g. Focus on your breathing and engage your core.'
+        self.fields['reps'].initial = 0
+        self.fields['sets'].initial = 0
+        self.fields['weight'].initial = 5.0
