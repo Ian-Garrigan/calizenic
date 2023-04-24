@@ -157,7 +157,52 @@ This was my early attempt of creating the schema with the help of an ERD diagram
 
 ![erd-diagram](documentation/schema/erd-diagram.png)
 
+---
 
+## Features 
 
+The features on the website help make it easier and more enjoyable for users. The navigation bar helps people find what they need quickly, while the jumbotron and call-to-action button on the landing page grab attention and encourage users to get started.
 
+The responsive footer gives users access to important links, and the simple login and sign-up forms make it easy for people to join or sign in. The edit log feature lets users customize their workouts, and the view workouts list with pagination keeps everything organized and easy to browse.
 
+All of these features work together to create a great user experience, making people want to use the site and tell their friends about it. Here are some of the elements of my site im most proud of: 
+
+</br>
+
+### landing page
+</br>
+
+![landing-page](documentation/site-screenshots/landing-page.png)
+### jumbotron
+</br>
+
+![jumbotron](documentation/site-screenshots/jumbotron.png)
+
+### dropend-bar
+</br>
+
+![dropend-bar](documentation/site-screenshots/dropend-bar.png)
+### edit-log
+</br>
+
+![edit-log](documentation/site-screenshots/edit-log-page.png)
+### login/sign in
+</br>
+
+![login](documentation/site-screenshots/login-page.png)
+### log-entry 
+</br>
+
+![log-entry](documentation/site-screenshots/log-entry.png)
+### footer
+</br>
+
+![footer](documentation/site-screenshots/footer.png)
+### nav-bar
+</br>
+
+![nav-bar](documentation/site-screenshots/nav-bar.png)
+### mobile-device-response
+</br>
+
+![mobile-device](documentation/site-screenshots/mobile-device.png)
