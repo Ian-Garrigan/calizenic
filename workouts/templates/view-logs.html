@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Your Logs {% endblock %}
+{% block title %}Your Log {% endblock %}
 
 {% block jumbotron %}
 {% endblock %}
@@ -10,10 +10,17 @@
 <div class="container pt-5">
     <div class="row">
         <div class="col-md-8 col-lg-6 mx-auto">
-            <h2 class="text-primary mb-4 text-start">Log Entries:</h2>
+            <h1 class="text-primary mb-4 text-start">Log Entry:</h1>
+            <ul class="messages mt-4">
+                {% for message in messages %}
+                <li class="{{ message.tags }} test-success">
+                    <p class="text-success">{{ message }} &#x2705;</p>
+                </li>
+                {% endfor %}
+            </ul>
             <div class="list-group">
                 {% for log in logs %}
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="{% url 'workouts:edit-log' log.id %}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ log.log_name }}</h5>
                         <p>Exercise type: {{ log.exercise_type }}</p>
@@ -28,6 +35,7 @@
                         <p>{{ log.note }}</p>
                     </div>
                 </a>
+                <strong>Click on the template to Edit entries <i class="fa-regular fa-hand-pointer"></i></strong>
                 <hr>
                 <div class="alert alert-info">
                     <label class="form-check-label" for="reverseCheck1">
@@ -35,13 +43,17 @@
                         it has been completed:
                     </label>
                     <div class="col-8">
-                    <div class="form-check form-check-reverse">
-                        <input class="form-check-input p-2" type="checkbox" value="" id="reverseCheck1"
-                            {% if log.log_name.was_performed %}checked{% endif %} onclick="logCheckboxValue(this)">
-                    </div>
+                        <div class="form-check form-check-reverse">
+                            <input class="form-check-input p-2" type="checkbox" value="" id="reverseCheck1"
+                                {% if log.log_name.was_performed %}checked{% endif %} onclick="logCheckboxValue(this)">
+                        </div>
                     </div>
                 </div>
+                <a href="{% url 'workouts:delete-workout-template' title.id %}" class="btn btn-danger w-50 mx-auto">Delete this template</a>
                 <br>
+                <a href="{% url 'workouts:user-templates-list' %}" role="button" class="btn btn-secondary w-50 mx-auto">
+                    Return to Templates list
+                </a>
                 <hr>
                 {% empty %}
                 <p><i class="fa-solid fa-square-xmark fa-2xl" style="color: #c03411;"></i></p>
@@ -49,9 +61,6 @@
                 {% endfor %}
             </div>
         </div>
-        <script>
-            console.log("JavaScript file linked successfully");
-        </script>
     </div>
 </div>
 
