@@ -5,7 +5,9 @@ Calizenic is a web application designed specifically for calisthenics athletes w
 
 My application targets calisthenics athletes and fitness enthusiasts who want a dedicated platform to manage their workout routines. Calizenic simplifies the process of creating and logging workouts while providing useful exercises to help users stay motivated.
 
+</br>
 
+![site-image](documentation/site-screenshots/jumbotron.png)
 ------------
 
 ## UX:
@@ -226,6 +228,8 @@ The color choices for the website include blue, light blue, deep red, and a whit
 
 To complement the color scheme, I opted for *minimalistic* shapes and a vector-style background image. These design elements contribute to the overall visual harmony and make the website more engaging without being overwhelming or distracting. The combination of simple shapes and vibrant colors creates a modern and inviting atmosphere, encouraging users to explore the platform and engage with the content.
 
+![coolers](https://res.cloudinary.com/dfwhnlt1s/image/upload/v1682331595/palette_azlog5.png)
+
 Ultimately, the goal of the design is to create a long-lasting impression on users, making them feel comfortable and motivated to use the platform for their fitness journey. By combining this color palette, minimalistic shapes, and an eye-catching background, I believe that the design is both enjoyable and functional.
 
 ## Typography 
@@ -240,5 +244,41 @@ By combining the distinctive and eye-catching KaushanScript-Regular with the rea
 
 ## Technologies used
 
+#### Languages:
+
+- HTMl5
+
+- CSS3
+
+- Python 
+
+- Javascript
+
+#### Frameworks & Tools
+
+- Django
+
+- Bootstrap
+
+- Crispy-forms
+
+- Allauth 
+
+- Cloudinary
+
+- Postgresql
+
+- Git 
+
+- Heroku 
+
+- Github 
+
+- Balsamiq wireframer
+
+- Font Awesome & Font Squirrel 
+
 ## Credits 
+
+I would like to thank my mentor [Tim Nelson](https://github.com/TravelTimN). Your insights and advice have not only contributed to the success of this project but also helped me gain a deeper understanding of the field. I am truly grateful for the time and effort you have invested in mentoring me. I would like to wish you all the best in your future in Germany. Everybody at Code Institute will miss you greatly! 
 
