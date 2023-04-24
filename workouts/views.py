@@ -76,7 +76,7 @@ def edit_log(request, id):
         if edit_form.is_valid():
             edit_form.save()
             messages.success(request, 'Log entry updated')
-            return redirect('workouts:view_log', id=log.log_name.id)
+            return redirect('workouts:view-log', id=log.log_name.id)
         else:
             messages.error(request, 'An error occurred, please try again')
     else:
@@ -86,3 +86,16 @@ def edit_log(request, id):
         'edit_form': edit_form
     }
     return render(request, 'edit-log.html', context)
+
+
+@login_required
+def delete_workout_template(request, id):
+    workout_template = get_object_or_404(WorkoutTemplate, id=id)
+    if request.method == 'POST':
+        workout_template.delete()
+        messages.success(request, 'Workout template and its log entries deleted.')
+        return redirect('workouts:user-templates-list')
+    context = {
+        'workout_template': workout_template
+    }
+    return render(request, 'delete-workout-template.html', context)
