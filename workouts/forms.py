@@ -43,21 +43,14 @@ class DataFromWorkoutLogAndExercises(forms.ModelForm):
 
 
 class EditLogForm(forms.ModelForm):
-    exercise_dropdown = forms.ModelChoiceField(
-        queryset=Exercises.objects.all(),
-        label='Exercise Type',
-        required=True,
-        empty_label='Choose one:',
-        widget=forms.Select(attrs={'id': 'select-exercise'}),
-    )
-
+   
     class Meta:
         model = WorkoutLog
-        fields = ('exercise_type', 'weight', 'sets', 'reps', )
+        fields = ('exercise_type', 'weight', 'sets', 'reps', 'note' )
 
     def save(self, commit=True):
         log = super(EditLogForm, self).save(commit=False)
-        log.exercise_type = self.cleaned_data('exercise_dropdown')
+        log.exercise_dropdown = self.cleaned_data['exercise_type']
         if commit:
             log.save()
         return log
