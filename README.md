@@ -169,40 +169,76 @@ All of these features work together to create a great user experience, making pe
 
 </br>
 
-### landing page
+### Landing page
+The landing page provides a visually appealing introduction to the site, with clear messaging and a call-to-action button that encourages users to explore further.
 </br>
 
 ![landing-page](documentation/site-screenshots/landing-page.png)
 ### jumbotron
+The jumbotron is a large, attention-grabbing element that highlights important information or promotions, helping to draw users into the site's content.
 </br>
 
 ![jumbotron](documentation/site-screenshots/jumbotron.png)
 
 ### dropend-bar
+The dropend bar offers an easy-to-use navigation system, allowing users to find the features they need quickly and efficiently.
 </br>
 
 ![dropend-bar](documentation/site-screenshots/dropend-bar.png)
 ### edit-log
+The edit log page enables users to customize their workout logs, providing flexibility and personalization to their fitness journey.
 </br>
 
 ![edit-log](documentation/site-screenshots/edit-log-page.png)
 ### login/sign in
+The login and sign-in pages offer simple and straightforward forms for users to access their accounts or join the platform.
 </br>
 
 ![login](documentation/site-screenshots/login-page.png)
 ### log-entry 
+The log entry page allows users to input their workout data, helping them track their progress and stay motivated.
 </br>
 
 ![log-entry](documentation/site-screenshots/log-entry.png)
 ### footer
+The footer provides quick access to essential links and information, while also maintaining a clean and organized layout.
 </br>
 
 ![footer](documentation/site-screenshots/footer.png)
 ### nav-bar
+The navigation bar is a user-friendly menu that helps users navigate the site easily and find what they're looking for.
 </br>
 
 ![nav-bar](documentation/site-screenshots/nav-bar.png)
 ### mobile-device-response
+The mobile-device shot view demonstrates that the site is fully responsive and adapts well to different screen sizes, ensuring a positive experience for users on any device.
 </br>
 
 ![mobile-device](documentation/site-screenshots/mobile-device.png)
+
+</br>
+
+# Web Design 
+
+My design philosophy is centered around simplicity, user-friendliness, and creating a visually appealing experience. I believe that a well-designed website should not only be easy to navigate but also leave a lasting impression on its users. With this in mind, I chose a color palette and design elements that work together to achieve these goals.
+
+The color choices for the website include blue, light blue, deep red, and a white background. **Blue** is known to evoke feelings of trust, stability, and calmness, making it an ideal choice for a fitness platform like this. **Light blue** adds a touch of freshness and energy, while the **deep red** provides contrast and attracts attention to important elements on the site. The **white** background creates a clean and minimalistic look, ensuring that the content remains the main focus.
+
+To complement the color scheme, I opted for *minimalistic* shapes and a vector-style background image. These design elements contribute to the overall visual harmony and make the website more engaging without being overwhelming or distracting. The combination of simple shapes and vibrant colors creates a modern and inviting atmosphere, encouraging users to explore the platform and engage with the content.
+
+Ultimately, the goal of the design is to create a long-lasting impression on users, making them feel comfortable and motivated to use the platform for their fitness journey. By combining this color palette, minimalistic shapes, and an eye-catching background, I believe that the design is both enjoyable and functional.
+
+## Typography 
+
+For the typography choices on Calizenic, I selected KaushanScript-Regular and Source Sans Pro to create a visually appealing and easy-to-read experience for users.
+
+**KaushanScript-Regular** is a stylish and modern script font that adds a touch of elegance and personality to the platform. I chose this font for headings and important elements because it captures attention and sets the tone for the site's overall design aesthetic.
+
+On the other hand, **Source Sans Pro** is a versatile and clean sans-serif font that provides excellent legibility for body text and other content. Its simplicity and clarity make it an ideal choice for the majority of the text on the website, ensuring that users can easily read and comprehend the information provided.
+
+By combining the distinctive and eye-catching KaushanScript-Regular with the readability and functionality of Source Sans Pro, I aimed to create a harmonious balance.
+
+## Technologies used
+
+## Credits 
+
