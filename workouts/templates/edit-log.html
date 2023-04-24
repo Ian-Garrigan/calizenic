@@ -7,14 +7,27 @@
 {% block title %} Edit Log{% endblock %}
 
 {% block content %}
-<form action="" method="post" enctype="multipart/form-data">
+
+
+<form  class="form-container col-8 mt-5 mx-auto" action="" method="post" enctype="multipart/form-data">
+        <div class="text-center">
+            <h1>Edit Log: {{ edit_form.template_name }} </h1>
+    </div>
     {% for hidden_field in form.hidden_fields %}
     {{ hidden_field.errors }}
     {{ hidden_field }}
     {% endfor %}
 
     {% csrf_token %}
-    {{ edit_form|crispy }}
-
+    {{ form.non_form_errors }}
+    <div class="row justify-content-center">
+        <div class="col-sm-11 col-md-8 col-lg-8 p-2 d-grid">
+            <div class="form-group">
+                {{ edit_form|crispy }}
+            </div>
+            <button type="submit" class="btn btn-primary col-6 mx-auto">Save Changes</button>
+        </div>
+    </div>
+</form>
 
 {% endblock content %}

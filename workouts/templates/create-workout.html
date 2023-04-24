@@ -10,53 +10,55 @@
     <div class="col-md-8">
       <ul class="messages mt-4">
         {% for message in messages %}
-          <li class="{{ message.tags }} test-success"><p class="text-success">{{ message }} &#x2705;</p></li>
+        <li class="{{ message.tags }} test-success">
+          <p class="text-success">{{ message }} &#x2705;</p>
+        </li>
         {% endfor %}
       </ul>
       <div class="form-container">
-            <h2 class="text-center">
-              Create a workout:
-            </h2>
-            <!-- FORM -->
-            <form method="POST" action="" autocomplete="off">
-              {% for hidden_field in form.hidden_fields %}
-                {{ hidden_field.errors }}
-                {{ hidden_field }}
-              {% endfor %}
-    
-              {% csrf_token %}
-              {{ form.non_form_errors }}
-    
-              <div class="row">
-                <div class="col-9 col-md-8 col-lg-8 mx-auto">
-                    <div class="form-group">
-                      {{ form1|crispy }}
-                    </div>
-                  </div>
+        <h1 class="text-center">
+          Create a workout:
+        </h1>
+        <!-- FORM -->
+        <form method="POST" action="" autocomplete="off">
+          {% for hidden_field in form.hidden_fields %}
+          {{ hidden_field.errors }}
+          {{ hidden_field }}
+          {% endfor %}
+
+          {% csrf_token %}
+          {{ form.non_form_errors }}
+
+          <div class="row">
+            <div class="col-9 col-md-8 col-lg-8 mx-auto">
+              <div class="form-group">
+                {{ form1|crispy }}
               </div>
-    
-              <div class="row">
-                <div class="col-7 col-md-7 col-lg-7 p-3 mx-auto">
-                    <div class="form-group">
-                      {{ form2|crispy }}
-                    </div>
-                  </div>
-              </div>
-              
-              <div class="d-grid gap-2 p-3">
-                <button type="submit" class="btn btn-success col-lg-6 mx-auto">
-                  Create workout template
-                </button>
-                <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary col-lg-6 mx-auto">
-                  Return to Dashboard
-                </a>
-              </div>
-    
-            </form>
+            </div>
           </div>
-        </div>
+
+          <div class="row">
+            <div class="col-7 col-md-7 col-lg-7 p-3 mx-auto">
+              <div class="form-group">
+                {{ form2|crispy }}
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 p-3">
+            <button type="submit" class="btn btn-success col-lg-6 mx-auto">
+              Create workout template
+            </button>
+            <a href="{% url 'workouts:user-dashboard' %}" role="button" class="btn btn-secondary col-lg-6 mx-auto">
+              Return to Dashboard
+            </a>
+          </div>
+
+        </form>
       </div>
     </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
