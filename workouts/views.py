@@ -18,6 +18,7 @@ class UserDashboard(TemplateView):
     template_name = 'user-dashboard.html'
 
 
+# Function to create a new workout template.
 @login_required
 def create_workout_template(request):
     context = {}
@@ -48,6 +49,7 @@ def create_workout_template(request):
     return render(request, 'create-workout.html', context)
 
 
+# View to display the list of workout templates for the user.
 class UserTemplatesList(ListView):
     model = WorkoutTemplate
     context_object_name = 'user_templates'
@@ -56,6 +58,7 @@ class UserTemplatesList(ListView):
     paginate_by = 6
 
 
+# Function to view a specific workout log.
 def view_log(request, id):
     title = get_object_or_404(WorkoutTemplate, id=id)
     logs = WorkoutLog.objects.filter(log_name=id).order_by('-id')[:3]
@@ -67,6 +70,7 @@ def view_log(request, id):
     return render(request, template, context)
 
 
+# Function to edit a specific workout log.
 @login_required
 def edit_log(request, id):
     log = get_object_or_404(WorkoutLog, id=id)
@@ -88,6 +92,7 @@ def edit_log(request, id):
     return render(request, 'edit-log.html', context)
 
 
+# Function to delete a workout template and its associated log entries.
 @login_required
 def delete_workout_template(request, id):
     workout_template = get_object_or_404(WorkoutTemplate, id=id)

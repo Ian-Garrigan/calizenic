@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # redirection urls
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'workouts:user-dashboard'
 LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
