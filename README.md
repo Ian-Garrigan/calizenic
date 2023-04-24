@@ -8,13 +8,13 @@ My application targets calisthenics athletes and fitness enthusiasts who want a 
 
 ------------
 
-## UX
+## UX:
 
 Calizenic aims to unite calisthenics athletes seeking a straightforward platform for designing, logging, and tracking their specialized workouts. Catering to a complex and demanding fitness discipline, the platform strives to offer a seamless experience for athletes of all skill levels, from novices to seasoned practitioners. The site's visual elements and overall design focus on delivering an enjoyable user experience, characterized by an appealing and aesthetically pleasing interface.
 
 ------------
 
-### Users i would like to target
+### Users i would like to target:
 
 - An individual passionate about calisthenics and looking for a platform to create, log, and track workouts.
 - Someone seeking a user-friendly interface that simplifies the process of designing personalized calisthenics routines.
@@ -23,7 +23,7 @@ Calizenic aims to unite calisthenics athletes seeking a straightforward platform
 - Someone interested in connecting with fellow calisthenics enthusiasts and sharing workout tips, progress, and experiences.
 - An individual who appreciates the convenience of accessing their calisthenics workout data from any device, at any time.
 
-### My website aims
+### My website aims:
 
 - As a calisthenics enthusiast myself, I want to offer a dedicated and easy-to-use workout app that fills the gap in the market, catering specifically to calisthenics athletes like me.
 - I want to provide a wide range of workout plans, exercises, and progress tracking tools to support myself and other users in achieving our fitness goals.
@@ -32,7 +32,7 @@ Calizenic aims to unite calisthenics athletes seeking a straightforward platform
 - I am committed to continuously improving and expanding the app's features and functionalities based on user feedback, keeping up with evolving fitness trends and user needs.
 - I will ensure the app's compatibility and seamless performance across various devices, making it easy for users like myself to access our workout plans and track our progress anytime, anywhere.
 
-## Agile Development Process
+## Agile Development Process:
 
 In this project, I utilized a Kanban project board to effectively manage tasks and progress. I organized the tasks using three main labels: Must Have, Should Have, and Could Have. This approach ensured a structured and efficient workflow while prioritizing and implementing the various features. You can view it [here](https://github.com/users/Ian-Garrigan/projects/5/views/1) </br>
 
@@ -42,7 +42,10 @@ In this project, I utilized a Kanban project board to effectively manage tasks a
 </br>
 
 
-### User Stories
+### User Stories:
+
+In this project, I created over 20 user stories to outline the different features and requirements. User stories help us understand the software from the end user's perspective and highlight the value each feature provides. These user stories guided the development process, making it easier to prioritize and focus on the most important aspects with each athlete in mind.
+</br>
 
 1. **User Story:** exercise weight selection
 
@@ -122,4 +125,39 @@ In this project, I utilized a Kanban project board to effectively manage tasks a
 
 20.	**User Story:** pagination for list view
 
-- As a user, i want to be able to easily sort and look through a list of items on the page. 
+- As a user, i want to be able to easily sort and look through a list of items on the page.
+
+------------
+
+### Wireframes 
+
+During the early stages of this project, I employed wireframes as an essential tool in the design process. Crafting wireframes enabled me to visualize the layout and functionality prior to writing any code or finalizing the visual design, ultimately conserving time and resources by avoiding potential adjustments later. Initially, I began my mornings early on in jotting down basic layouts, which were then refined into more sophisticated wireframes with the help of Balsamiq.
+
+These wireframes served as my rough designs for the project and underwent work throughout its development. The significance of wireframing is in its ability to detect potential design issues early, allowing a more effective and streamlined development journey.
+
+The following are the initial designs that were crafted and modified during the course of the project:
+
+ - [*Home Page*](documentation/wireframes/wireframe-1.png)
+
+- [*User Dashboard*](documentation/wireframes/wireframe-3.png)
+
+- [*User Dashboard 2.0*](documentation/wireframes/wireframe-4.png)
+
+- [*Login/Sign Up Page*](documentation/wireframes/wireframe-2.png)
+
+---
+
+### Project Schema
+Planning and designing the database schema early in the development process was crucial for the success of the project. A well-structured database schema enables efficient data organization, storage, and retrieval, which directly impacts the performance and scalability of the application.
+
+By carefully considering the schema design upfront, I was able to identify the relationships between different entities, as well as the required data types and constraints. This understanding allowed me to streamline the development process by reducing the likelihood of encountering data-related issues later on, such as data inconsistency or redundancy.
+
+This was my early attempt of creating the schema with the help of an ERD diagram: 
+</br>
+
+![erd-diagram](documentation/schema/erd-diagram.png)
+
+
+
+
+
