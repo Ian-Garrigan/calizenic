@@ -48,8 +48,6 @@ def create_workout_template(request):
     return render(request, 'create-workout.html', context)
 
 
-
-
 class UserTemplatesList(ListView):
     model = WorkoutTemplate
     context_object_name = 'user_templates'
@@ -58,7 +56,7 @@ class UserTemplatesList(ListView):
     paginate_by = 6
 
 
-def view_logs(request, id):
+def view_log(request, id):
     title = get_object_or_404(WorkoutTemplate, id=id)
     logs = WorkoutLog.objects.filter(log_name=id).order_by('-id')[:3]
     template = 'view-logs.html'
@@ -69,13 +67,22 @@ def view_logs(request, id):
     return render(request, template, context)
 
 
-def workout_templates_data(request, id):
-    workout_template = get_object_or_404(WorkoutTemplate, id=id)
-    logs = WorkoutLog.objects.filter(log_name=id).order_by('-id')[:3]
-    template = 'view-logs.html'
+@login_required
+def edit_log(request, id):
+    log = get_object_or_404(WorkoutLog, id=id)
+
+    if request.method == 'POST':
+        edit_form = EditLogForm(request.POST, instance=log)
+        if edit_form.is_valid():
+            edit_form.save()
+            messages.success(request, 'Log entry updated')
+            return redirect('workouts:view_log', id=log.log_name.id)
+        else:
+            messages.error(request, 'An error occurred, please try again')
+    else:
+        edit_form = EditLogForm(instance=log)
+
     context = {
-        'title': title,
-        'logs': logs
+        'edit_form': edit_form
     }
-    return render(request, template, context)
-    
+    return render(request, 'edit-log.html', context)

@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-{% block title %} Edit Workout{% endblock %}
+{% block jumbotron %}
+{% endblock %}
+
+{% block title %} Edit Log{% endblock %}
 
 {% block content %}
 <form action="" method="post" enctype="multipart/form-data">
@@ -10,9 +14,7 @@
     {% endfor %}
 
     {% csrf_token %}
-
-    {{ form.management_form }}
-    {{ form.non_form_errors }}
+    {{ edit_form|crispy }}
 
 
 {% endblock content %}
