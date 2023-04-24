@@ -14,7 +14,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Yes</button>
-                <a href="{% url 'workouts:user-templates-list' %}" class="btn btn-secondary">No, go back</a>
+                <a href="{% url 'workouts:view-log' workout_template.id %}" class="btn btn-secondary">No, go back</a>
             </form>
         </div>
     </div>

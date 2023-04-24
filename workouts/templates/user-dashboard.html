@@ -4,10 +4,11 @@
 
 {% block title %} Dashboard{% endblock %}
 
+
+
 {% block calltoaction %}
-<a class="btn btn-primary btn-sm" href="{% url 'workouts:user-templates-list' %}" role="button">View Workout Templates</a>
-<a class="btn btn-success btn-sm" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
-<a class="btn btn-primary btn-sm bg-gradient" href="#" role="button">Your Profile</a>
+<a class="btn btn-primary btn" href="{% url 'workouts:user-templates-list' %}" role="button">View Workout Templates</a>
+<a class="btn btn-success btn" href="{% url 'workouts:create-workout' %}" role="button">Create a Workout Template</a>
 {% endblock %}
 
 {% block content %}
