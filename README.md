@@ -242,6 +242,13 @@ On the other hand, **Source Sans Pro** is a versatile and clean sans-serif font 
 
 By combining the distinctive and eye-catching KaushanScript-Regular with the readability and functionality of Source Sans Pro, I aimed to create a harmonious balance.
 
+Css Validator: 
+
+![css](documentation/site-screenshots/css-valid.png)
+
+</br>
+
+
 ## Technologies used
 
 #### Languages:
@@ -277,6 +284,7 @@ By combining the distinctive and eye-catching KaushanScript-Regular with the rea
 - Balsamiq wireframer
 
 - Font Awesome & Font Squirrel 
+
 
 ## Credits 
 
