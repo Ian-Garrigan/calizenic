@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 
 
+# A ModelForm to create a new workout template w/ the create_workout view
 class DataFromWorkoutTemplate(forms.ModelForm):
     class Meta:
         model = WorkoutTemplate
@@ -15,6 +16,7 @@ class DataFromWorkoutTemplate(forms.ModelForm):
         self.fields['template_name'].widget.attrs['placeholder'] = ' (e.g. Bicep Bonanza)'
 
 
+# A ModelForm to create a new workout template w/ the create_workout view
 class DataFromWorkoutLogAndExercises(forms.ModelForm):
     exercise_dropdown = forms.ModelChoiceField(
         queryset=Exercises.objects.all(),
@@ -34,6 +36,8 @@ class DataFromWorkoutLogAndExercises(forms.ModelForm):
             'note': 'Note',
         }
 
+
+# Add a placeholder to the note field & set initial value for ease of use
     def __init__(self, *args, **kwargs):
         super(DataFromWorkoutLogAndExercises, self).__init__(*args, **kwargs)
         self.fields['note'].widget.attrs['placeholder'] = 'e.g. Focus on your breathing and engage your core.'
@@ -50,6 +54,7 @@ class EditLogForm(forms.ModelForm):
 
     def save(self, commit=True):
         log = super(EditLogForm, self).save(commit=False)
+        # Map the exercise_type field to the exercise_dropdown field.
         log.exercise_dropdown = self.cleaned_data['exercise_type']
         if commit:
             log.save()
