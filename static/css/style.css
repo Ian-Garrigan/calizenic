@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: 'Kaushan Script';
-  src: url('/static/fonts/KaushanScript-Regular.woff2') format('woff2'),
-       url('/static/fonts/KaushanScript-Regular.woff') format('woff');
+  src: url('https://res.cloudinary.com/dfwhnlt1s/raw/upload/v1682315825/static/fonts/KaushanScript-Regular.2cce3e518425.woff2') format('woff2'),
+       url('https://res.cloudinary.com/dfwhnlt1s/raw/upload/v1682315826/static/fonts/KaushanScript-Regular.e6fd9e1d6c5a.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
