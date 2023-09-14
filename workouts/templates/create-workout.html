@@ -8,13 +8,20 @@
 <div class="container my-3">
   <div class="row justify-content-center">
     <div class="col-md-8">
+      {% for message in messages %}
       <ul class="messages mt-3">
-        {% for message in messages %}
-        <li class="{{ message.tags }} test-success">
-          <p class="text-success">{{ message }} &#x2705;</p>
+        <li class="{{ message.tags }} {% if message.tags == 'error' %}text-danger{% else %}text-success{% endif %}">
+          <p>
+            {% if message.tags == 'error' %}
+                &#10060;  <!-- '❌' for error messages -->
+            {% else %}
+                &#x2705;  <!-- '✅' for success messages -->
+            {% endif %}
+            {{ message }}
+          </p>
         </li>
-        {% endfor %}
       </ul>
+      {% endfor %}
       <div class="form-container">
         <h1 class="text-center">
           Create a workout:
