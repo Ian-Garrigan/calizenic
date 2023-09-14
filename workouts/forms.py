@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.core.exceptions import ValidationError
 
 
 # A ModelForm to create a new workout template w/ the create_workout view
@@ -36,11 +37,24 @@ class DataFromWorkoutLogAndExercises(forms.ModelForm):
             'note': 'Note',
         }
 
+    def clean_sets(self):
+        sets = self.cleaned_data['sets']
+        if sets < 1:
+            raise ValidationError('This field is required.')
+        return sets
+
+    def clean_reps(self):
+        reps = self.cleaned_data['reps']
+        if reps < 1:
+            raise ValidationError('This field is required.')
+        return reps
 
 # Add a placeholder to the note field & set initial value for ease of use
     def __init__(self, *args, **kwargs):
         super(DataFromWorkoutLogAndExercises, self).__init__(*args, **kwargs)
         self.fields['note'].widget.attrs['placeholder'] = 'e.g. Focus on your breathing and engage your core.'
+        self.fields['reps'].required = True  # Make reps field required
+        self.fields['sets'].required = True  # Make sets field required
         self.fields['reps'].initial = 0
         self.fields['sets'].initial = 0
         self.fields['weight'].initial = 5.0
