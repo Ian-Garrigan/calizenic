@@ -48,10 +48,10 @@ class WorkoutLog(models.Model):
 
     log_name = models.ForeignKey(WorkoutTemplate, on_delete=models.CASCADE)
     exercise_type = models.ForeignKey(Exercises, on_delete=models.CASCADE)
-    weight = models.DecimalField(max_digits=3, decimal_places=1)
+    weight = models.DecimalField(max_digits=3, decimal_places=1, blank=True, null=True)
     sets = models.PositiveIntegerField()
     reps = models.PositiveIntegerField()
-    note = models.TextField()
+    note = models.TextField(blank=True)
 
     def get_absolute_url(self):
         return reverse('workouts:detail-create-workout', kwargs={'pk': self.pk})
