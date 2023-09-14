@@ -242,11 +242,65 @@ On the other hand, **Source Sans Pro** is a versatile and clean sans-serif font 
 
 By combining the distinctive and eye-catching KaushanScript-Regular with the readability and functionality of Source Sans Pro, I aimed to create a harmonious balance.
 
-Css Validator: 
 
-![css](documentation/site-screenshots/css-valid.png)
+## **Deployment**
 
-</br>
+### **GitHub**
+
+This project began by forking a specialized [Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template) which simulates a terminal in the web browser. The steps to set up the GitHub repository were as follows:
+
+1. Click the "Use this template" button.
+2. Name the repository
+3. Launch the project using the Gitpod web extension.
+4. Pin the project in your Gitpod workspaces for easy access.
+
+### **Version Control**
+
+Version control was managed using Git, and the following steps were taken:
+
+Make changes to project files in Gitpod.
+Use the git add command to stage files for commit (e.g., git add filename or git add . to add all files).
+Commit changes with a descriptive message using the git commit -m "Your commit message" command.
+Push changes to GitHub with the git push command.
+Alternatively, use Gitpod's Source Control staging area to stage and commit changes.
+Stage files, add a commit message, and then commit and push changes to GitHub.
+
+### **Clone Repo**
+
+Creating a clone enables you to make a copy of the repository at that point in time - this lets you run a copy of the project locally: This can be done by:
+
+1. Navigating to https://github.com/Ian-Garrigan/calizenic
+2. Clicking on the arrow on the green code button at the top of the list of files
+3. Select Local then HTTPS copy the URL it provides to the clipboard
+4. Navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
+5. Type 'git clone' and paste the HTTPS link you copied from GitHub
+6. Press enter and git will clone the repository to your local machine
+
+### **Forking the GitHub Repository**
+
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+
+1. Log in to GitHub and locate the repository [calizenic](https://github.com/Ian-Garrigan/calizenic)
+2. At the top of the Repository (not the top of the page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### **Final Deployment with Heroku**
+
+The below steps were followed to deploy this project to Heroku:
+1. Go to [Heroku](https://dashboard.heroku.com/apps) and click "New" to create a new app.
+2. After choosing the app name and setting the region, press "Create app".
+3. Go to "Settings" and navigate to Config Vars, enter the below:
+    - SECRET_KEY: (Enter your secret key)
+    - DATABASE_URL: (Enter the database URL from ElephantSQL)
+    - CLOUNDINARY_URL: (Enter Cloudinary API URL)
+    - PORT: 8000
+4. Leave "Settings" and go to "Deploy". Scroll down and set Deployment Method to GitHub.
+Once GitHub is chosen, find your repository and connect it to Heroku.
+5. Scroll down to Manual Deploy, make sure the "main" branch is selected, and click "Deploy Branch". 
+6. The deployed app can be found [here](https://calizenic.herokuapp.com/).
+
+
+
 
 
 ## Technologies used
