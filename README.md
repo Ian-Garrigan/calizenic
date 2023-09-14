@@ -300,7 +300,9 @@ Once GitHub is chosen, find your repository and connect it to Heroku.
 6. The deployed app can be found [here](https://calizenic.herokuapp.com/).
 
 
+### TESTING
 
+Testing can be found here: [TESTING.md](TESTING.md)
 
 
 ## Technologies used
